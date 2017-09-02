@@ -6,4 +6,6 @@
     <string name="open">Open</string>
     <string name="close">close</string>
     <string name="action_settings">setting</string>
+    <string name="addItemHint">New To Do Item</string>
+    <string name="addItemContentDescription">New To Do Item</string>
 </resources>

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -54,6 +55,36 @@ public class MainActivity extends AppCompatActivity {
                 todoItems);
 
         mListView.setAdapter(aa);
+
+        mEditText.setOnKeyListener(new View.OnKeyListener() {
+            /**
+             * Called when a hardware key is dispatched to a view. This allows listeners to
+             * get a chance to respond before the target view.
+             * <p>Key presses in software keyboards will generally NOT trigger this method,
+             * although some may elect to do so in some situations. Do not assume a
+             * software input method has to be key-based; even if it is, it may use key presses
+             * in a different way than you expect, so there is no way to reliably catch soft
+             * input key presses.
+             *
+             * @param v       The view the key has been dispatched to.
+             * @param keyCode The code for the physical key that was pressed
+             * @param event   The KeyEvent object containing full information about
+             *                the event.
+             * @return True if the listener has consumed the event, false otherwise.
+             */
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+              if (event.getAction() == KeyEvent.ACTION_DOWN){
+                  if (keyCode == KeyEvent.KEYCODE_ENTER){
+                      todoItems.add(0,mEditText.getText().toString());
+                      aa.notifyDataSetChanged();
+                      mEditText.setText("");
+                      return  true;
+                  }
+              }
+              return false;
+            }
+        });
 
 //       ButterKnife.inject(this);
 //        Animation animation =  AnimationUtils.loadAnimation(this, R.anim.blink);

@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -44,17 +43,19 @@ public class MainInterfaceActivity  extends AppCompatActivity implements ViewAni
     private int res;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Intent intent = getIntent();
-        Bundle bundle =intent.getBundleExtra("bundle");
-        String user = bundle.getString("username");
-        Log.e("MainInterface", user);
+//        Intent intent = getIntent();
+//        Bundle bundle =intent.getBundleExtra("bundle");
+//        String user = bundle.getString("username");
+//        Log.e("MainInterface", user);
 
-        contentFragmet= ContentFragment.newInstatnce(R.drawable.content_music);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,contentFragmet).commit();
+//        contentFragmet = ContentFragment.newInstatnce(R.drawable.content_music);
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.content_frame, contentFragmet)
+//                .commit();
         drawerLayout = (DrawerLayout) findViewById(R.id.draw_layout);
         drawerLayout.setScrimColor(Color.TRANSPARENT);
         linearLayout = (LinearLayout) findViewById(R.id.left_drawer);
@@ -64,12 +65,13 @@ public class MainInterfaceActivity  extends AppCompatActivity implements ViewAni
                 drawerLayout.closeDrawers();
             }
         });
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        ViewAnimator viewAnimator = new ViewAnimator<>(MainInterfaceActivity.this, new ArrayList<Resourceble>(),
 //                contentFragmet, (LinearLayout)findViewById(R.id.left_drawer), anim)
 
         setActionBra();
-        createMenuList();
-        viewAnimator = new ViewAnimator<>(this,list, contentFragmet, drawerLayout, this);
+//        createMenuList();
+//        viewAnimator = new ViewAnimator<>(this,list, contentFragmet, drawerLayout, this);
 
     }
 
@@ -90,29 +92,30 @@ public class MainInterfaceActivity  extends AppCompatActivity implements ViewAni
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        drawerToggle = new ActionBarDrawerToggle(
-             this,
-                drawerLayout,
-                toolbar,
-                R.string.open,
-                R.string.close
-        ){
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                linearLayout.removeAllViews();
-                linearLayout.invalidate();
-            }
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset){
-                super.onDrawerSlide(drawerView, slideOffset);
-                if (slideOffset > 0.6&& linearLayout.getChildCount() == 0){
-                     viewAnimator.showMenuContent();
-                }
-            }
-            public void onDrawerOpened(View drawerView){
-                super.onDrawerOpened(drawerView);
-            }
-        };
+//        drawerToggle = new ActionBarDrawerToggle(
+//                this,
+//                drawerLayout,
+//                toolbar,
+//                R.string.open,
+//                R.string.close
+//        );
+// {
+//            public void onDrawerClosed(View view) {
+//                super.onDrawerClosed(view);
+//                linearLayout.removeAllViews();
+//                linearLayout.invalidate();
+//            }
+//            @Override
+//            public void onDrawerSlide(View drawerView, float slideOffset){
+//                super.onDrawerSlide(drawerView, slideOffset);
+//                if (slideOffset > 0.6&& linearLayout.getChildCount() == 0){
+//                     viewAnimator.showMenuContent();
+//                }
+//            }
+//            public void onDrawrerOpened(View drawerView){
+//                super.onDrawerOpened(drawerView);
+//            }
+//        };
 
         drawerLayout.setDrawerListener(drawerToggle);
     }
@@ -120,7 +123,7 @@ public class MainInterfaceActivity  extends AppCompatActivity implements ViewAni
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        drawerToggle.syncState();
+//        drawerToggle.syncState();
     }
 
     @Override
@@ -137,9 +140,9 @@ public class MainInterfaceActivity  extends AppCompatActivity implements ViewAni
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item)){
-            return true;
-        }
+//        if (drawerToggle.onOptionsItemSelected(item)){
+//            return true;
+//        }
           switch (item.getItemId()){
               case R.id.action_settings:
                   return true;

@@ -8,4 +8,6 @@
     <string name="action_settings">setting</string>
     <string name="addItemHint">New To Do Item</string>
     <string name="addItemContentDescription">New To Do Item</string>
+    <string name="weixin">微信</string>
+    <string name="pengyou">朋友</string>
 </resources>

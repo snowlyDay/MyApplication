@@ -1,15 +1,22 @@
 package com.example.wangyinbao.myapplication;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
+import android.os.AsyncTask;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.util.Log;
@@ -19,6 +26,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -41,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     String mName;
     String mPsw;
     private String TAG = "MainActivity";
+    private ContentFragment mWeixin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,36 +95,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//       ButterKnife.inject(this);
-//        Animation animation =  AnimationUtils.loadAnimation(this, R.anim.blink);
-//        View view = findViewById(R.id.mView);
-//        animation.setRepeatCount(20);
-//        view.startAnimation(animation);
-//
-//         animation.setAnimationListener(new Animation.AnimationListener() {
-//             @Override
-//             public void onAnimationStart(Animation animation) {
-//                 Log.i(TAG, "onAnimationStart");
-//             }
-//
-//             @Override
-//             public void onAnimationEnd(Animation animation) {
-//                 Log.i(TAG, "onAnimationEnd");
-//             }
-//
-//             @Override
-//             public void onAnimationRepeat(Animation animation) {
-//                 Log.i(TAG, "onAnimationRepeat");
-//             }
-//         });
-//        Resources resources = getResources();
+        Button btn_weixin = (Button) findViewById(R.id.weixin);
+        btn_weixin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              FragmentManager fragmentManager = getSupportFragmentManager();
+              FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.id_content, new TitleFragmet());
+            fragmentTransaction.commit();
 
-//        ImageView imageView = (ImageView) findViewById(R.id.iv_image);
-//
-//        imageView.setBackgroundResource(R.drawable.bg);
-//        imageView.startAnimation(animation);
-//        AnimationDrawable  animationDrawable =  (AnimationDrawable) imageView.getBackground();
-//        animationDrawable.start();
+            }
+        });
+        setDefaultFragment();
+        setLocalBroadCastManager();
+
+    }
+
+    private void setLocalBroadCastManager() {
+        Intent intent = new Intent("dd");
+        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+    }
+
+    private void setDefaultFragment() {
+//        FragmentManager fm = ;
+//        FragmentTransaction transaction = fm.beginTransaction();
+//        mWeixin = new ContentFragment();
+//        transaction.replace(R.id.id_content, new Fragment());
 
     }
 

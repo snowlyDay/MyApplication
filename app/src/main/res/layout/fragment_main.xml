@@ -15,8 +15,6 @@
             android:src="@drawable/content_films"
             android:id="@+id/image_content"/>
 
-
-
     </FrameLayout>
 
 

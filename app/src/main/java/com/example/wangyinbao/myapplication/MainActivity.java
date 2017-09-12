@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
               FragmentManager fragmentManager = getSupportFragmentManager();
               FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.id_content, new TitleFragmet());
+            fragmentTransaction.add(R.id.id_content, new NewItemFragment());
             fragmentTransaction.commit();
 
             }

@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".CustomListView">
+
+        </activity>
+
         <activity android:name=".MainInterfaceActivity"></activity>
         <meta-data android:name="dd" android:value="${myplace}"></meta-data>
     </application>

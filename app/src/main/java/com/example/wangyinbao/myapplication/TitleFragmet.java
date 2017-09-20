@@ -1,5 +1,6 @@
 package com.example.wangyinbao.myapplication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import java.awt.font.TextAttribute;
+
 /**
  * Created by wangyinbao on 2017/9/2.
  */
@@ -16,6 +19,29 @@ import android.widget.ImageButton;
 public class TitleFragmet extends Fragment {
 
     private String TAG = "TitleFragment";
+    private String mArgument;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            mArgument = bundle.getString("jjj");
+        }
+    }
+
+    public static ContentFragment newInstance(String argument){
+        Bundle bundle = new Bundle();
+        bundle.putString("jjj", argument );
+        ContentFragment contentFragment = new ContentFragment();
+        contentFragment.setArguments(bundle);
+        return contentFragment;
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -66,21 +66,6 @@ public class MainActivity extends AppCompatActivity {
         mListView.setAdapter(aa);
 
         mEditText.setOnKeyListener(new View.OnKeyListener() {
-            /**
-             * Called when a hardware key is dispatched to a view. This allows listeners to
-             * get a chance to respond before the target view.
-             * <p>Key presses in software keyboards will generally NOT trigger this method,
-             * although some may elect to do so in some situations. Do not assume a
-             * software input method has to be key-based; even if it is, it may use key presses
-             * in a different way than you expect, so there is no way to reliably catch soft
-             * input key presses.
-             *
-             * @param v       The view the key has been dispatched to.
-             * @param keyCode The code for the physical key that was pressed
-             * @param event   The KeyEvent object containing full information about
-             *                the event.
-             * @return True if the listener has consumed the event, false otherwise.
-             */
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
               if (event.getAction() == KeyEvent.ACTION_DOWN){
@@ -99,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
         btn_weixin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              FragmentManager fragmentManager = getSupportFragmentManager();
-              FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.id_content, new NewItemFragment());
-            fragmentTransaction.commit();
+
+                Intent intent;
+                intent = new Intent(MainActivity.this, CustomListView.class);
+                startActivity(intent);
 
             }
         });
@@ -117,10 +102,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDefaultFragment() {
-//        FragmentManager fm = ;
-//        FragmentTransaction transaction = fm.beginTransaction();
-//        mWeixin = new ContentFragment();
-//        transaction.replace(R.id.id_content, new Fragment());
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        mWeixin = new ContentFragment();
+        transaction.replace(R.id.id_content, new Fragment());
 
     }
 

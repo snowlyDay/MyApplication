@@ -4,24 +4,17 @@
     android:layout_width="match_parent"
     android:orientation="vertical">
 
-    <fragment
-        android:name="com.example.wangyinbao.myapplication.TitleFragmet"
-        android:id="@+id/title_fragmet"
-        android:layout_width="400dp"
-        android:layout_height="50dp">
-
-    </fragment>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/myEditText"
         android:hint="@string/addItemHint"
-        android:contentDescription="@string/addItemContentDescription"
-        />
+        android:contentDescription="@string/addItemContentDescription" />
 
     <ListView
         android:id="@+id/myListView"
         android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
         android:layout_height="500dp">
     </ListView>
 
